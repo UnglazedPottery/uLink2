@@ -1,0 +1,5 @@
+<h2>User Index</h2>
+
+<% @users.each do |user| %>
+    <a class="button" href="/users/<%= user.id %>"><%= user.username %></a><br>
+<% end %>

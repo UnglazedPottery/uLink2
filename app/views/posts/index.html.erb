@@ -1,0 +1,5 @@
+<h2>Post Index</h2>
+
+<% @posts.each do |post| %>
+    <a class="button" href="/posts/<%= post.id %>"><%= post.note %></a><br>
+<% end %>

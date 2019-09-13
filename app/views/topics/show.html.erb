@@ -1,0 +1,74 @@
+<head>
+  <title> Topic show page</title>
+  <style>
+    .mainBanner {
+        display: block-inline;
+        margin-left: auto;
+        margin-right: auto;
+        width: 58%;
+        height: 333px;
+    }
+    .mainTopics {
+        display: block-inline;
+        margin-left: auto;
+        margin-right: auto;
+        width: 22%;
+    }
+    .sideBanner {
+        display: block-inline;
+        width: 20%;
+        height: 320px;
+    }
+    #postsSection {
+        text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<% if @topic.image.attached? %>
+  <img src="<%= (url_for(@topic.image)) %>" class="sideBanner">
+<% end %>
+
+<img src="/assets/calm.jpg" class="mainBanner"> 
+
+<% if @topic.image.attached? %>
+  <img src="<%= (url_for(@topic.image)) %>" class="sideBanner">
+<% end %>
+
+
+<div id="postsSection">
+<h3>Create New Post</h3>
+
+<%= form_for(@post) do |f| %>
+    <input id="hidden" type="hidden" name="id" value="<%= @topic.id%>"/>
+  <label>url:</label><br>
+  <%= f.text_field :url %><br>
+
+  <label>note:</label><br>
+  <%= f.text_field :note %><br><br>
+
+  <%= f.submit %>
+<% end %>
+
+<h2><%= @topic.name %> posts: </h2>
+<% @topic.posts.each do |p| %>
+    <a class="button" href=<%= p.url %>><%= p.note %></a><br>
+<% end %>
+
+
+
+<br><br><% if current_user %>
+  Logged in as <%= current_user.username %>.
+  <a href="/logout">Logout</a>
+<% else %>
+  <a href="/signup">Signup</a> or 
+  <a href="/login">Login</a>
+<% end %><br>
+
+<a class="button" href="/">Home</a>
+
+</div>
+</body>

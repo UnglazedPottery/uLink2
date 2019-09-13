@@ -1,0 +1,22 @@
+<style>
+  .field_with_errors {
+    border-style: solid;
+    border-color: red;
+  }
+</style>
+
+
+<h3>Create Account</h3>
+
+<%= form_for(@user) do |f| %>
+  <div>
+    <label>Username:</label><br>
+    <%= f.text_field :username %>
+  </div>
+  
+  <div>
+    <label>Password:</label><br>
+    <%= f.text_field :password %>
+  </div>
+  <%= f.submit %>
+<% end %>
