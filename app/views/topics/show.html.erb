@@ -22,6 +22,11 @@
     #postsSection {
         text-align: center;
     }
+    .heart{
+        display: block-inline;
+        width: 20px;
+        height: 20px;
+    }
 
   </style>
 </head>
@@ -55,7 +60,9 @@
 
 <h3><%= @topic.name %> links: </h3>
 <% @topic.posts.each do |p| %>
-    <a class="button" href=<%= p.url %>><%= p.note %></a><br>
+    <a class="button" href=<%= p.url %>><%= p.note %></a>
+    <a href="/posts/<%= p.id %>/heart"><img src="/assets/heart.png" class="heart" ></a><%= p.likes.to_s %><br>
+    
 <% end %>
 
 

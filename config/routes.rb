@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # get 'users/destroy'
   # get('/login', to: 'users#login')
   post('/authenticate', to: 'users#authenticate')
+  get('/posts/:id/heart', to: 'posts#heart')
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'html', to: 'topics#html'

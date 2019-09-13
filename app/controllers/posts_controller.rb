@@ -27,15 +27,24 @@ class PostsController < ApplicationController
 
 	def update
 	  @post = Post.find(params[:id])
-      @post.update(post_params)
+      @post.update({
+		  url: params[:post][:url],
+		  note: params[:post][:note]
+		})
+
       @post.save
 	  redirect_to post_path(@post)
 	end
 
-	private
+	def heart
+		@post = Post.find(params[:id])
+		x = @post.likes
+		@post.likes = x + 1
+		puts @post.likes
+		puts "---------------------------------------------"
+		@post.save
+		redirect_to "/topics/#{@post.topic.id}"
+	end
 
-		def post_params
-			params.require(:post).permit(:note, :url)
-        end
         
 end
