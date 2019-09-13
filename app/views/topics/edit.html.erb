@@ -1,0 +1,15 @@
+<h3>Edit Topic: <%= @topic.name %></h3>
+
+<%= form_for(@topic) do |f| %>
+  <div>
+    <label>topic name:</label><br>
+    <%= f.text_field :name %>
+  </div><br>
+  
+  <div>
+    <label>image url for banner:</label><br>
+    <%= f.file_field :image %>
+  </div><br>
+
+  <%= f.submit %>
+<% end %>

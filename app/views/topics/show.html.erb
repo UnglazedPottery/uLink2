@@ -40,7 +40,7 @@
 
 
 <div id="postsSection">
-<h3>Create New Post</h3>
+<h3>Post a New Link</h3>
 
 <%= form_for(@post) do |f| %>
     <input id="hidden" type="hidden" name="id" value="<%= @topic.id%>"/>
@@ -50,10 +50,10 @@
   <label>note:</label><br>
   <%= f.text_field :note %><br><br>
 
-  <%= f.submit %>
-<% end %>
+  <%= f.submit("Create Link") %>
+<% end %><br>
 
-<h2><%= @topic.name %> posts: </h2>
+<h3><%= @topic.name %> links: </h3>
 <% @topic.posts.each do |p| %>
     <a class="button" href=<%= p.url %>><%= p.note %></a><br>
 <% end %>

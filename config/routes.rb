@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  # root 'home#index'
+  root 'topics#index'
   resources :posts
   resources :topics
   resources :users

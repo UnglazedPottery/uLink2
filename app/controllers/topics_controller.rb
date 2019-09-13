@@ -23,16 +23,21 @@ class TopicsController < ApplicationController
         render 'show'
     end
 
-    # def edit
-        
-    #     @topic = Topic.find(params[:id])
-    # end
+    def edit
+        @topic = Topic.find(params[:id])
+    end
 
-    # def update
-    #     @topic = Topic.find(params[:id])
-    #     @topic.create({name : params[:name]})
-    #     redirect_to "/topics/#{@topic.id}"
-    # end
+    def update
+        @topic = Topic.find(params[:id])
+        @topic.update({
+            name: params[:topic][:name]
+        })
+        if !@topic.image.attached?
+            @topic.image.attach(params[:topic][:image])
+        end
+
+        redirect_to "/topics/#{@topic.id}"
+    end
 
     def html
         render 'htmlPage.html.erb'

@@ -1,3 +1,48 @@
+<style>
+
+  .mainBanner {
+        display: block-inline;
+        margin-left: auto;
+        margin-right: auto;
+        width: 49%;
+        height: 320px;
+    }
+
+    .sideBanner {
+        display: block-inline;
+        width: 25%;
+        height: 320px;
+    }
+
+    .sideBanner2 {
+        display: block-inline;
+        width: 25%;
+        height: 320px;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+  .imagelink-text {
+        display: block-inline;
+        width: 30%;
+        height: 400px;
+  }
+
+  .imagelink {
+        display: block-inline;
+        width: 15%;
+        height: 130px;
+  }
+</style>
+
+<h1 class="title" style="font-size:60px;">uLink</h1>
+
+<img src="/assets/FlatironBuilding.jpg" class="sideBanner">
+<img src="/assets/calm.jpg" class="mainBanner">
+<img src="/assets/FlatironBuilding2.png" class="sideBanner"><br><br> 
+
 <% if current_user %>
   Logged in as <%= current_user.username %>.
   <a href="/users/destroy">Logout</a>
@@ -6,11 +51,14 @@
   <a href="/login">Login</a>
 <% end %>
 
-<h2>Topics</h2>
+<h2>Topics:</h2>
 
 <% @topics.each do |topic| %>
+    <div class="image">
     <a class="button" href="/topics/<%= topic.id %>"><%= topic.name %></a><br>
     <% if topic.image.attached? %>
-      <a href="/topics/<%= topic.id %>"><img src="<%= (url_for(topic.image)) %>" class="sideBanner2"></a><br><br>
+      <a href="/topics/<%= topic.id %>"><img src="<%= (url_for(topic.image)) %>" class="imagelink" ></a>
+      <br><br><br><br>
     <% end %>
+    </div>
 <% end %>
