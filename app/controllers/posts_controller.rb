@@ -40,9 +40,11 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		x = @post.likes
 		@post.likes = x + 1
-		puts @post.likes
-		puts "---------------------------------------------"
-		@post.save
+		# puts @post.likes
+		# puts "---------------------------------------------"
+		if current_user
+			@post.save
+		end
 		redirect_to "/topics/#{@post.topic.id}"
 	end
 
