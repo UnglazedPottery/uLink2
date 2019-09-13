@@ -10,4 +10,7 @@
 
 <% @topics.each do |topic| %>
     <a class="button" href="/topics/<%= topic.id %>"><%= topic.name %></a><br>
+    <% if topic.image.attached? %>
+      <a href="/topics/<%= topic.id %>"><img src="<%= (url_for(topic.image)) %>" class="sideBanner2"></a><br><br>
+    <% end %>
 <% end %>

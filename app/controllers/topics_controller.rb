@@ -11,7 +11,6 @@ class TopicsController < ApplicationController
         # byebug
         @topic = Topic.create({
             name: params[:topic][:name]
-            # image: params[:topic][:image]
         })
         @topic.image.attach(params[:topic][:image])
         redirect_to "/topics"
